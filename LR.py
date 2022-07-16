@@ -56,14 +56,14 @@ class LineerRegressionModel:
             tmpM2 = (2 * tmpM2) / length
             self.m2 = self.m2 - ( self.learning_rate * tmpM2 )
 
-            resultOfEpochTraining = self.predict(x_train, y_train); #o anki m1, m2 ve b'ye gore training datasi icin predict results dondu.            
+            resultOfEpochTraining = self.predict(x_train, y_train); #o ana ait m1, m2 ve b'ye gore training datasi icin predict results dondu.            
             err = 0 #Mean Error
             for i in range (len(y_train)):
                 err = err + (z_train[i] - resultOfEpochTraining[i])
             err = err / len(y_train)
             accuracyTraining.append(err)
 
-            resultOfEpochTesting = self.predict(x_test, y_test); #o anki m1, m2 ve b'ye gore test datasi icin predict results dondu.
+            resultOfEpochTesting = self.predict(x_test, y_test); #o ana ait m1, m2 ve b'ye gore test datasi icin predict results dondu.
             err2 = 0 #Mean Error
             for i in range (len(y_test)):
                 err2 = err2 + (z_test[i] - resultOfEpochTraining[i])
