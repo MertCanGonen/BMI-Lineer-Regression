@@ -30,7 +30,7 @@ class LineerRegressionModel:
         accuracyTraining = []
         accuracyTesting = []
         result = []
-        for i in range (1000):
+        for i in range (self.epoch):
             lossSumTraining = self.calculateLoss(self.m1, self.m2, self.b, x_train, y_train, z_train)
             lossSumTesting = self.calculateLoss(self.m1, self.m2, self.b, x_test, y_test, z_test)
 
@@ -57,16 +57,16 @@ class LineerRegressionModel:
             self.m2 = self.m2 - ( self.learning_rate * tmpM2 )
 
             resultOfEpochTraining = self.predict(x_train, y_train); #o ana ait m1, m2 ve b'ye gore training datasi icin predict results dondu.            
-            err = 0 #Mean Error
+            err = 0 #Mean Absolute Error
             for i in range (len(y_train)):
-                err = err + (z_train[i] - resultOfEpochTraining[i])
+                err = err + abs(z_train[i] - resultOfEpochTraining[i])
             err = err / len(y_train)
             accuracyTraining.append(err)
 
             resultOfEpochTesting = self.predict(x_test, y_test); #o ana ait m1, m2 ve b'ye gore test datasi icin predict results dondu.
-            err2 = 0 #Mean Error
+            err2 = 0 #Mean Absolute Error
             for i in range (len(y_test)):
-                err2 = err2 + (z_test[i] - resultOfEpochTraining[i])
+                err2 = err2 + abs(z_test[i] - resultOfEpochTesting[i])
             err2 = err2 / len(y_test)
             accuracyTesting.append(err2)
 
